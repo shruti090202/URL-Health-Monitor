@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Health Monitor</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1><i class="fas fa-heartbeat"></i> URL Health Monitor</h1>
+        </header>
+
+        <main class="app-main">
+            <div class="card input-card">
+                <div class="card-header">
+                    <h2><i class="fas fa-link"></i> Monitor URLs</h2>
+                </div>
+                <div class="card-body">
+                    <div class="url-input-container">
+                        <textarea id="urlInput" placeholder="Enter URLs to monitor (one per line)&#10;Example: google.com&#10;         github.com&#10;         example.org" rows="5"></textarea>
+                    </div>
+                    <div class="button-container">
+                        <button id="checkButton" class="primary-button">
+                            <i class="fas fa-check-circle"></i> Check Status
+                        </button>
+                        <button id="clearButton" class="secondary-button">
+                            <i class="fas fa-trash"></i> Clear
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card results-card">
+                <div class="card-header">
+                    <h2><i class="fas fa-chart-line"></i> Current Status</h2>
+                    <span class="refresh-time" id="lastCheckedTime"></span>
+                </div>
+                <div class="card-body">
+                    <div class="results-container">
+                        <table id="resultsTable">
+                            <thead>
+                                <tr>
+                                    <th>URL</th>
+                                    <th>Status</th>
+                                    <th>Response Time</th>
+                                    <th>Last Checked</th>
+                                </tr>
+                            </thead>
+                            <tbody id="resultsBody">
+                                <!-- Results will be inserted here -->
+                            </tbody>
+                        </table>
+                        <div id="no-results" class="empty-state">
+                            <i class="fas fa-search"></i>
+                            <p>No URLs checked yet. Enter URLs above and click "Check Status".</p>
+                        </div>
+                        <div id="loading-results" class="loading-state hidden">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>Checking URLs...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card stats-card">
+                <div class="card-header">
+                    <h2><i class="fas fa-chart-pie"></i> URL Health Statistics</h2>
+                    <div class="toggle-container">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="statsToggle" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                        <span class="toggle-label">Show Statistics</span>
+                    </div>
+                </div>
+                <div class="card-body" id="statsCardBody">
+                    <div class="stats-container">
+                        <table id="statsTable">
+                            <thead>
+                                <tr>
+                                    <th>URL</th>
+                                    <th>Uptime</th>
+                                    <th>Avg Response</th>
+                                    <th>Checks</th>
+                                    <th>Monitoring Since</th>
+                                </tr>
+                            </thead>
+                            <tbody id="statsBody">
+                                <!-- Stats will be inserted here -->
+                            </tbody>
+                        </table>
+                        <div id="no-stats" class="empty-state">
+                            <i class="fas fa-chart-bar"></i>
+                            <p>No statistics available yet. Check some URLs to start collecting data.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card history-card">
+                <div class="card-header">
+                    <h2><i class="fas fa-history"></i> History</h2>
+                    <div class="toggle-container">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="historyToggle" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                        <span class="toggle-label">Show History</span>
+                    </div>
+                </div>
+                <div class="card-body" id="historyCardBody">
+                    <div class="history-container">
+                        <table id="historyTable">
+                            <thead>
+                                <tr>
+                                    <th>URL</th>
+                                    <th>Status</th>
+                                    <th>Response Time</th>
+                                    <th>Timestamp</th>
+                                </tr>
+                            </thead>
+                            <tbody id="historyBody">
+                                <!-- History will be inserted here -->
+                            </tbody>
+                        </table>
+                        <div id="no-history" class="empty-state">
+                            <i class="fas fa-clock"></i>
+                            <p>No history available. Check some URLs to start building history.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <p>URL Health Monitor &copy; 2025</p>
+        </footer>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>
